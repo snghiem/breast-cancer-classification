@@ -1,4 +1,4 @@
-# Title: Linear Discriminative Analysis
+# Title: Linear Discriminant Analysis
 # Author: Sony Nghiem
 
 rm(list=ls())

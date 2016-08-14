@@ -1,4 +1,4 @@
-# Title: Quadratic Discriminative Analysis
+# Title: Quadratic Discriminant Analysis
 # Author: Sony Nghiem
 
 rm(list=ls())
