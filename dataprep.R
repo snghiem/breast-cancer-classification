@@ -17,11 +17,6 @@ dataprep = function() {
   #change the first two variables' names
   names(brcancer)[1:2] = c("ID","Diag")
   
-  #divide the dataset into training and testing samples
-  require(caTools)
-  set.seed(1)
-  train = sample.split(brcancer$ID, SplitRatio = 0.75)
-  
   # remember to return the value in R function
-  return(cbind(brcancer,train))
+  return(brcancer)
 }

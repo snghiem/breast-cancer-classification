@@ -6,8 +6,11 @@ rm(list=ls())
 
 source("dataprep.R")
 brcancer = dataprep()
-train = brcancer[,33]
-brcancer = brcancer[,1:32]
+
+#divide the dataset into training and testing samples
+require(caTools)
+set.seed(1)
+train = sample.split(brcancer$ID, SplitRatio = 0.75)
 
 attach(brcancer)
 glm.fit = glm(Diag~.-ID, data=brcancer, subset=train, family=binomial) # we don't count on ID as a predictor
@@ -29,7 +32,7 @@ table(glm.pred, Diag[!train])
 
 # error test is
 mean(glm.pred != Diag[!train])
-# the error test is 6.2%, not bad (above we found out that there is no
+# the error test is 6.29%, not bad (above we found out that there is no
 # significant z-test on any predictor).
 
 detach(brcancer)

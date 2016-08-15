@@ -4,8 +4,11 @@
 rm(list=ls())
 source("dataprep.R")
 brcancer = dataprep()
-train = brcancer[,33]
-brcancer = brcancer[,1:32]
+
+#divide the dataset into training and testing samples
+require(caTools)
+set.seed(1)
+train = sample.split(brcancer$ID, SplitRatio = 0.75)
 
 attach(brcancer)
 require(MASS) #lda requires MASS, either library(MASS)
